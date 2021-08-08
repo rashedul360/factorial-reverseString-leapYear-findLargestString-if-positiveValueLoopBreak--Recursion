@@ -9,33 +9,169 @@
       positiveValueLoopBreak Recursion 1
     </title>
     <style>
-      div {
+      body {
+        transition: all 1s ease;
+      }
+      .div {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        /* height: 100vh; */
         font-size: 2.5rem;
       }
       a {
         text-decoration: none;
         color: tomato;
       }
+      textarea {
+        width: 100%;
+        height: auto;
+      }
     </style>
   </head>
   <body>
-    <div>
+    <div class="div">
       <a href="">কি কি আছে এই javascript কোড এ ?</a>
       <ol type="1">
-        <li><a href="">Factorial</a></li>
-        <li><a href="">ReverseString</a></li>
-        <li><a href="">Find Largest String Of array </a></li>
+        <li><a href="#Factorial">Factorial</a></li>
+        <li><a href="#reverseString">ReverseString</a></li>
+        <li><a href="#arr">Find Largest String Of array </a></li>
         <li>
-          <a href="">If thay has a positive number the loop will braked</a>
+          <a href="#positive"
+            >If arr has a positive number the loop will braked</a
+          >
         </li>
-        <li><a href="">Recursion</a></li>
-        <!-- <li><a href=""></a></li>> -->
+        <li>
+          <a
+            href=""
+            onclick="alert(  'Recursion দেখতে Factorial অংশে এই লাইনটি return n * factorial(n - 1); দেখ ' ) "
+            >Recursion</a
+          >
+        </li>
+        <li><a href="#Fibonacci">Fibonacci</a></li>
+        <li><a href="#leapYear">Leap Year</a></li>
       </ol>
     </div>
+    <div>
+      <h1 id="Factorial " style="text-align: center">
+        Factorial বের করণ (২ ফাংশন)
+      </h1>
+      <textarea name="" id="" cols="100%" rows="10">
+        function factorial(num) {
+          let fact = 1;
+          for (let i = 1; i <= num; i++) {
+            fact *= i;
+          }
+          return fact;
+        }
+        console.log(factorial(7));
+        function factorial1(n) {
+          if (n === 1) {
+            return 1;
+          }
+          return n * factorial(n - 1);
+        }
+        console.log(factorial1(7));
+      </textarea>
+    </div>
+    <div>
+      <h1 id="reverseString" style="text-align: center">স্ট্রিং রিভার্স কর</h1>
+      <textarea name="" id="" cols="30" rows="10">
+        function recursiveStr(str) {
+          let unique = "";
+          for (element of str) {
+            unique = element + unique;
+          }
+          return unique;
+        }
+        console.log(recursiveStr("rashedul"));
+        // string reverse
+        function reverseString(str) {
+          // use  empty string to store reversed string
+          let newString = "";
+          for (let i = str.length - 1; i >= 0; i--) {
+            newString += str[i];
+          }
+          return newString;
+        }
+        console.log(reverseString("islam"));
+      </textarea>
+    </div>
+    <div>
+      <h1 id="arr" style="text-align: center">
+        arr এর ভিতরের সবচেয়ে বড় স্ট্রিং কে বের কর
+      </h1>
+      <textarea name="" id="" cols="30" rows="10">
+        function bestFriend(names) {
+          let name = [0];
+          for (const element of names) {
+            if (element.length > name.length) {
+              name = element;
+            }
+          }
+          return name;
+        }
+        let names = ["rashedul islam shihab", "rashedul", "taki", "rashedul islam"];
+        console.log(bestFriend(names));
+      </textarea>
+    </div>
+
+    <div>
+      <h1 id="positive" style="text-align: center">
+        যদি arr এর মধ্যে - (positive) নাম্বার পওা যায় তাহলে সেখানেই ব্রেক কর
+      </h1>
+      <textarea name="" id="" cols="30" rows="10">
+        function onlyPositive(array) {
+          let arr = [];
+          for (const element of array) {
+            if (element < 0) {
+              console.log("here is positive number");
+              break;
+            }
+            arr.push(element);
+          }
+          return arr;
+        }
+        const result = [1, 2, 3, 4, -1, -2, 5, 6];
+        console.log(onlyPositive(result));
+          
+      </textarea>
+    </div>
+    <div>
+      <h1 id="Fibonacci" style="text-align: center">Fibonacci বের কর</h1>
+      <textarea name="" id="" cols="30" rows="10">
+                
+        // Take out the fibonacci series
+        function fibonacci(num) {
+          let fibo = [0, 1];
+          for (let i = 2; i <= num; i++) {
+            fibo[i] = fibo[i - 1] + fibo[i - 2];
+          }
+          return fibo;
+        }
+        console.log(fibonacci(10));
+
+      </textarea>
+    </div>
+    <div>
+      <h1 id="leapYear" style="text-align: center">Leap Year বের কর</h1>
+      <textarea name="" id="" cols="30" rows="10">
+
+        function leapYear(year) {
+          if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        console.log(leapYear(2021));
+        
+      </textarea>
+    </div>
+    <!-- <div>
+      <h1 style="text-align: center"></h1>
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+    </div> -->
 
     <script src="./index.js"></script>
   </body>
